@@ -1,0 +1,201 @@
+/* 1. Reset margin and padding on the body so there are no white gaps around the edges */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Style the header container */
+.hero-banner {
+  width: 100%;
+  overflow: hidden; /* Ensures no scrollbars if image stretches */
+}
+
+/* 3. Style the banner image */
+.banner-img {
+  width: 100%;       /* Forces the image to take full width of the screen */
+  height: auto;      /* Automatically adjusts the height proportionally */
+  display: block;    /* Removes default bottom spacing under inline images */
+}
+
+.welcome-section {
+  text-align: center;
+  padding: 0 0;
+}
+
+.welcome-section h1 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #222222;
+}
+
+.content-box {
+  width: 80%;             /* Takes up 80% of the screen width */
+  max-width: 1200px;      /* Prevents the box from getting too wide on huge desktop screens */
+  margin: 2rem auto;      /* "auto" on left/right centers the box horizontally; 2rem adds top/bottom spacing */
+  
+  background-color: #000000; /* Black background */
+  color: #ffffff;         /* White text color for readability */
+  
+  padding: 1rem 2rem;   /* Adds breathing room inside the box so content doesn't touch the edges */
+  height: auto;           /* Automatically calculates height based on content inside */
+  border-radius: 8px;     /* Optional: slightly rounds the corners for a modern clean look */
+}
+
+/* Base text styling inside the black box */
+.content-box h2 {
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.content-box p {
+  line-height: 1.6;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Container Grid Setup (7 Equal Columns for the cards) */
+.custom-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal width columns */
+  gap: 1rem;                             /* Spacing between grid items */
+  width: 100%;
+}
+
+/* Span Helper Classes */
+.span-1 { grid-column: span 1; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+
+/* Section Header Styles */
+.section-header {
+  background-color: #222222;
+  color: #00d2ff;               /* Accent title color */
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-left: 4px solid #00d2ff;
+  border-radius: 4px;
+  margin-top: 0;
+  /* margin-top: 1rem; */
+  text-align: left;
+}
+
+/* 1. Base Card Styles (Updated with smooth transition properties) */
+.grid-card {
+  width: 100%;
+  background-color: #000000;
+  border: 0px solid #000000;
+  border-radius: 12px;
+
+  /* REMOVE top/left/right padding so the circle can touch the edges */
+  padding: 0 0 1rem 0; /* 1.2rem 0.85rem; */
+  
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow: visible; */
+
+  /* Crucial: overflow must be hidden so zooming image doesn't break rounded corners */
+  overflow: hidden;
+
+  /* Smooth transition for animation when hovering */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+  
+  cursor: pointer;          /* Shows pointer hand on hover */
+  /* position: relative; */
+  /* overflow: hidden;         Keeps inner elements inside rounded corners */
+  
+}
+
+/* ZOOM THE ENTIRE BLOCK ON HOVER */
+.grid-card-link:hover .grid-card {
+  transform: scale(1.12) translateY(-4px); /* Scales the WHOLE card up by 12% and lifts it slightly */
+  background-color: #1a1a1a;
+  border-color: #00d2ff;
+  box-shadow: 0 16px 32px rgba(0, 210, 255, 0.25),
+              0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Circular Profile Photo Inside (No individual zoom needed now) */
+.grid-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.75rem;
+  border: 3px solid #333333;
+  transition: border-color 0.3s ease;
+}
+
+.grid-card-link:hover img {
+  border-color: #00d2ff; /* Keeps border color accent on hover */
+}
+
+/* .grid-card:hover img { */
+  transform: scale(1.08); /* Slightly zooms the image inside the card */
+/* } */
+
+.grid-card h3 {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+  padding: 0 0.5rem;
+}
+
+.grid-card-link:hover h3 {
+  color: #00d2ff;
+}
+
+.grid-card p {
+  font-size: 0.8rem;
+  color: #888888;
+  padding: 0 0.5rem;
+}
+
+/* Remove default underline and text color changes from the link wrapper */
+.grid-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex; /* Helps ensure card occupies full height/width */
+  grid-column: span 1; /* Retain the spanning behavior */
+  position: relative;
+  z-index: 1; /* Default stacking layer */
+}
+
+/* Elevate the z-index of the active link so the scaled card sits ON TOP of nearby items */
+.grid-card-link:hover {
+  z-index: 50;
+}
+
+/* .grid-card-link:hover img { */
+  transform: scale(1.1);   /* Slightly larger zoom, still a circle */
+  border-color: #00d2ff;   /* Highlights the circular border on hover */
+/* } */
+
+/* Optional: Stack items cleanly on smaller screens/mobile */
+@media (max-width: 900px) {
+  .custom-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .section-header, .span-1, .span-2, .span-3, .span-4 {
+    grid-column: span 2; /* Force headers and cards to full width on mobile */
+  }
+}
+
+
+/* ==========================================
+   TEMPORARY DEBUGGING BORDERS (Delete later)
+   ========================================== */
+/* header, section, main, nav, footer, div {
+  outline: 2px dashed #ff3366 !important;
+} */
