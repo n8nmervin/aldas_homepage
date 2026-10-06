@@ -34,7 +34,7 @@
   max-width: 1200px;      /* Prevents the box from getting too wide on huge desktop screens */
   margin: 2rem auto;      /* "auto" on left/right centers the box horizontally; 2rem adds top/bottom spacing */
   
-  background-color: #000000; /* Black background */
+  background-color: #5c9caa; /* Black background */
   color: #ffffff;         /* White text color for readability */
   
   padding: 1rem 2rem;   /* Adds breathing room inside the box so content doesn't touch the edges */
@@ -64,18 +64,19 @@
 }
 
 /* Span Helper Classes */
-.span-1 { grid-column: span 1; }
-.span-2 { grid-column: span 2; }
-.span-3 { grid-column: span 3; }
-.span-4 { grid-column: span 4; }
+.span-1 { grid-column: span 1; background-color: #102737; color: #f8cf47; }
+.span-2 { grid-column: span 2; background-color: #102737; color: #f8cf47; }
+.span-3 { grid-column: span 3; background-color: #102737; color: #f8cf47; }
+.span-4 { grid-column: span 4; background-color: #102737; color: #f8cf47; }
 
 /* Section Header Styles */
 .section-header {
-  background-color: #222222;
-  color: #00d2ff;               /* Accent title color */
-  padding: 0.75rem 1rem;
+  /* background-color: #102737; */
+  /* color: #00d2ff;               Accent title color */
+  padding: 0.75rem 1rem; /*  */
   font-weight: bold;
   font-size: 1.1rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-left: 4px solid #00d2ff;
   border-radius: 4px;
   margin-top: 0;
@@ -84,14 +85,15 @@
 }
 
 /* 1. Base Card Styles (Updated with smooth transition properties) */
+
 .grid-card {
   width: 100%;
-  background-color: #000000;
-  border: 0px solid #000000;
-  border-radius: 12px;
+  background-color: #5c9caa;
+  border: 0px solid #5c9caa;
+  border-radius: 0px;
 
   /* REMOVE top/left/right padding so the circle can touch the edges */
-  padding: 0 0 1rem 0; /* 1.2rem 0.85rem; */
+  padding: 0 0 0.5rem 0; /* 1.2rem 0.85rem; */
   
   text-align: center;
   display: flex;
@@ -117,8 +119,9 @@
 /* ZOOM THE ENTIRE BLOCK ON HOVER */
 .grid-card-link:hover .grid-card {
   transform: scale(1.12) translateY(-4px); /* Scales the WHOLE card up by 12% and lifts it slightly */
-  background-color: #1a1a1a;
+  background-color: #5c9caa; /* #1a1a1a */
   border-color: #00d2ff;
+  border-radius: 8px;
   box-shadow: 0 16px 32px rgba(0, 210, 255, 0.25),
               0 8px 16px rgba(0, 0, 0, 0.6);
 }
@@ -131,7 +134,7 @@
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 0.75rem;
-  border: 3px solid #333333;
+  border: 3px solid #ffffff; /*  #333333 */
   transition: border-color 0.3s ease;
 }
 
@@ -140,7 +143,7 @@
 }
 
 /* .grid-card:hover img { */
-  transform: scale(1.08); /* Slightly zooms the image inside the card */
+/*  transform: scale(1.08); Slightly zooms the image inside the card */
 /* } */
 
 .grid-card h3 {
@@ -177,8 +180,8 @@
 }
 
 /* .grid-card-link:hover img { */
-  transform: scale(1.1);   /* Slightly larger zoom, still a circle */
-  border-color: #00d2ff;   /* Highlights the circular border on hover */
+/*  transform: scale(1.1);   Slightly larger zoom, still a circle */
+/*  border-color: #00d2ff;   Highlights the circular border on hover */
 /* } */
 
 /* Optional: Stack items cleanly on smaller screens/mobile */
