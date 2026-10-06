@@ -6,19 +6,19 @@
 }
 
 /* 2. Style the header container */
-.hero-banner {
+/* .hero-banner {
   width: 100%;
-  overflow: hidden; /* Ensures no scrollbars if image stretches */
-}
+  overflow: hidden; Ensures no scrollbars if image stretches
+} */
 
 /* 3. Style the banner image */
-.banner-img {
-  width: 100%;       /* Forces the image to take full width of the screen */
-  height: auto;      /* Automatically adjusts the height proportionally */
-  display: block;    /* Removes default bottom spacing under inline images */
-}
+/* .banner-img { */
+  /* width: 100%;       Forces the image to take full width of the screen */
+  /* height: auto;      Automatically adjusts the height proportionally */
+  /* display: block;    Removes default bottom spacing under inline images */
+/* } */
 
-.welcome-section {
+/* .welcome-section {
   text-align: center;
   padding: 0 0;
 }
@@ -27,10 +27,10 @@
   font-family: system-ui, -apple-system, sans-serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   color: #222222;
-}
+} */
 
 .content-box {
-  width: 80%;             /* Takes up 80% of the screen width */
+  width: 100%;             /* Takes up 80% of the screen width */
   max-width: 1200px;      /* Prevents the box from getting too wide on huge desktop screens */
   margin: 2rem auto;      /* "auto" on left/right centers the box horizontally; 2rem adds top/bottom spacing */
   
