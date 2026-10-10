@@ -55,11 +55,19 @@ body {
   color: #00d2ff;
   padding: 0.5rem 0.4rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1rem; 
   font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
   border-left: 4px solid #00d2ff;
   border-radius: 4px;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  box-sizing: border-box;
 }
 
 /* 3. Outer Grid Link Wrapper */
