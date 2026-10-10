@@ -1,200 +1,186 @@
-/* 1. Reset margin and padding on the body so there are no white gaps around the edges */
+/* Base Styles */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* 2. Style the header container */
-/* .hero-banner {
-  width: 100%;
-  overflow: hidden; Ensures no scrollbars if image stretches
-} */
-
-/* 3. Style the banner image */
-/* .banner-img { */
-  /* width: 100%;       Forces the image to take full width of the screen */
-  /* height: auto;      Automatically adjusts the height proportionally */
-  /* display: block;    Removes default bottom spacing under inline images */
-/* } */
-
-/* .welcome-section {
-  text-align: center;
-  padding: 0 0;
-}
-
-.welcome-section h1 {
+body {
+  /* background-color: #000000; */
+  /* color: #ffffff; */
   font-family: system-ui, -apple-system, sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: #222222;
-} */
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
 
+/* 1. Main Outer Container */
 .content-box {
-  width: 100%;             /* Takes up 80% of the screen width */
-  max-width: 1200px;      /* Prevents the box from getting too wide on huge desktop screens */
-  margin: 2rem auto;      /* "auto" on left/right centers the box horizontally; 2rem adds top/bottom spacing */
-  
-  background-color: #5c9caa; /* Black background */
-  color: #ffffff;         /* White text color for readability */
-  
-  padding: 1rem 2rem;   /* Adds breathing room inside the box so content doesn't touch the edges */
-  height: auto;           /* Automatically calculates height based on content inside */
-  border-radius: 8px;     /* Optional: slightly rounds the corners for a modern clean look */
+  width: 100%;
+  max-width: 1200px;
+  background-color: #5c9caa; /* #0a0a0a; */
+  border: 1px solid #5c9caa;
+  border-radius: 12px;
+  padding:0.5em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  /* margin-top: 0.5rem; */
 }
 
-/* Base text styling inside the black box */
 .content-box h2 {
-  margin-bottom: 1rem;
-  margin-top: 0rem;
   text-align: center;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 1.8rem;
+  margin-top: 0.0rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
 }
 
-.content-box p {
-  line-height: 1.6;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-/* Container Grid Setup (7 Equal Columns for the cards) */
+/* 2. Custom 7-Column Grid */
 .custom-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 equal width columns */
-  gap: 1rem;                             /* Spacing between grid items */
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
   width: 100%;
 }
 
 /* Span Helper Classes */
-.span-1 { grid-column: span 1; background-color: #102737; color: #f8cf47; }
-.span-2 { grid-column: span 2; background-color: #102737; color: #f8cf47; }
-.span-3 { grid-column: span 3; background-color: #102737; color: #f8cf47; }
-.span-4 { grid-column: span 4; background-color: #102737; color: #f8cf47; }
+.span-1 { grid-column: span 1; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
 
-/* Section Header Styles */
+/* Sub-Headers */
 .section-header {
-  /* background-color: #102737; */
-  /* color: #00d2ff;               Accent title color */
-  padding: 0.75rem 1rem; /*  */
+  background-color: #102737;
+  color: #00d2ff;
+  padding: 0.75rem 1rem;
   font-weight: bold;
-  font-size: 1.1rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
   border-left: 4px solid #00d2ff;
   border-radius: 4px;
-  margin-top: 0;
-  /* margin-top: 1rem; */
-  text-align: left;
+  z-index: 1;
 }
 
-/* 1. Base Card Styles (Updated with smooth transition properties) */
-
-.grid-card {
-  width: 100%;
-  background-color: #5c9caa;
-  border: 0px solid #5c9caa;
-  border-radius: 0px;
-
-  /* REMOVE top/left/right padding so the circle can touch the edges */
-  padding: 0 0 0.5rem 0; /* 1.2rem 0.85rem; */
-  
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* overflow: visible; */
-
-  /* Crucial: overflow must be hidden so zooming image doesn't break rounded corners */
-  overflow: hidden;
-
-  /* Smooth transition for animation when hovering */
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              box-shadow 0.3s ease,
-              border-color 0.3s ease,
-              background-color 0.3s ease;
-  
-  cursor: pointer;          /* Shows pointer hand on hover */
-  /* position: relative; */
-  /* overflow: hidden;         Keeps inner elements inside rounded corners */
-  
-}
-
-/* ZOOM THE ENTIRE BLOCK ON HOVER */
-.grid-card-link:hover .grid-card {
-  transform: scale(1.12) translateY(-4px); /* Scales the WHOLE card up by 12% and lifts it slightly */
-  background-color: #5c9caa; /* #1a1a1a */
-  border-color: #00d2ff;
-  border-radius: 8px;
-  box-shadow: 0 16px 32px rgba(0, 210, 255, 0.25),
-              0 8px 16px rgba(0, 0, 0, 0.6);
-}
-
-/* Circular Profile Photo Inside (No individual zoom needed now) */
-.grid-card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  height: auto;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 0.75rem;
-  border: 3px solid #ffffff; /*  #333333 */
-  transition: border-color 0.3s ease;
-}
-
-.grid-card-link:hover img {
-  border-color: #00d2ff; /* Keeps border color accent on hover */
-}
-
-/* .grid-card:hover img { */
-/*  transform: scale(1.08); Slightly zooms the image inside the card */
-/* } */
-
-.grid-card h3 {
-  font-size: 1rem;
-  color: #ffffff;
-  margin-bottom: 0.25rem;
-  transition: color 0.3s ease;
-  padding: 0 0.5rem;
-}
-
-.grid-card-link:hover h3 {
-  color: #00d2ff;
-}
-
-.grid-card p {
-  font-size: 0.8rem;
-  color: #888888;
-  padding: 0 0.5rem;
-}
-
-/* Remove default underline and text color changes from the link wrapper */
+/* 3. Outer Grid Link Wrapper */
 .grid-card-link {
   text-decoration: none;
   color: inherit;
-  display: flex; /* Helps ensure card occupies full height/width */
-  grid-column: span 1; /* Retain the spanning behavior */
+  display: flex;
   position: relative;
-  z-index: 1; /* Default stacking layer */
+  margin-top: -20px;
+  z-index: 1;
 }
 
-/* Elevate the z-index of the active link so the scaled card sits ON TOP of nearby items */
 .grid-card-link:hover {
   z-index: 50;
 }
 
-/* .grid-card-link:hover img { */
-/*  transform: scale(1.1);   Slightly larger zoom, still a circle */
-/*  border-color: #00d2ff;   Highlights the circular border on hover */
-/* } */
+/* 4. Parent Card Box */
+.grid-card {
+  width: 100%;
+  background-color: transparent;
+  /* border: 1px solid #333333; */
+  border-radius: 8px;
+  padding: 0.5rem;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background-color 0.3s ease; */
+  cursor: pointer;
 
-/* Optional: Stack items cleanly on smaller screens/mobile */
-@media (max-width: 900px) {
-  .custom-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .section-header, .span-1, .span-2, .span-3, .span-4 {
-    grid-column: span 2; /* Force headers and cards to full width on mobile */
-  }
+  position: relative;
+  overflow: visible !important;
 }
 
+/* .grid-card-link:hover .grid-card { */
+  /* transform: scale(1.1) translateY(-15px); */
+  /* background-color: #1a1a1a; */
+  /* border-color: #00d2ff; */
+  /* box-shadow: 0 10px 20px rgba(0, 210, 255, 0.4); */
+
+  /* z-index: 100;
+  position: relative; */
+/* } */
+
+/* 5. TOP BOX: Media / Image Container */
+.card-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 6px solid #ffffff;
+  
+  /* CRITICAL: Clips the image so it doesn't spill outside the circle when enlarged */
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-show 0.3s, border-color 0.3s ease;
+  /* padding: 0.25rem; Adjust individual top box spacing here */
+}
+
+.grid-card-link:hover .card-media {
+  transform: scale(1.25) translateY(-12px);
+  border-color: #00d2ff;
+  box-shadow: 0 10px 20px rgba(0, 210, 255, 0.4);
+  z-index: 100;
+}
+
+/* Base Image Styles inside the circular frame */
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  transform: scale(1.15) translateX(-1%) translateY(-3%);
+}
+
+.grid-card-link:hover .card-media img {
+  border-color: #00d2ff;
+}
+
+/* Optional: Extra zoom on hover inside the circle */
+.grid-card-link:hover .card-media img {
+  transform: scale(1.35) !important;   /* Zooms in even further when hovering over the card */
+}
+
+/* 6. BOTTOM BOX: Text Content Container */
+.card-content {
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0.25rem 0.25rem 0.25rem; /* Adjust individual bottom box spacing here */
+}
+
+.card-content h3 {
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+  transition: color 0.3s ease;
+
+  /* Line Clamping to max 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word; /* Prevents long unbroken strings from overflowing */
+}
+
+.grid-card-link:hover .card-content h3 {
+  color: #00d2ff;
+}
+
+.card-content p {
+  font-size: 0.75rem;
+  color: #ffffff;
+}
 
 /* ==========================================
    TEMPORARY DEBUGGING BORDERS (Delete later)
