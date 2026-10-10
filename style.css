@@ -15,12 +15,11 @@ body {
 /* 1. Main Outer Container */
 .content-box {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px; /* Increased slightly to comfortably accommodate 9 columns */
   background-color: #5c9caa;
   border: 1px solid #5c9caa;
   border-radius: 12px;
-  padding:0.5em;
-  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); */
+  padding: 0.5em;
 }
 
 .content-box h2 {
@@ -32,59 +31,43 @@ body {
   color: #ffffff;
 }
 
-/* 2. Custom 7-Column Grid */
+/* 2. Custom 9-Column Grid */
 .custom-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 0.5rem;
   width: 100%;
 }
 
-/* Span Helper Classes */
+/* Span Helper Classes (Up to 9 Columns) */
 .span-1 { grid-column: span 1; }
 .span-2 { grid-column: span 2; }
 .span-3 { grid-column: span 3; }
 .span-4 { grid-column: span 4; }
+.span-5 { grid-column: span 5; }
+.span-6 { grid-column: span 6; }
+.span-7 { grid-column: span 7; }
+.span-8 { grid-column: span 8; }
+.span-9 { grid-column: span 9; }
 
 /* Sub-Headers */
 .section-header {
   background-color: #102737;
   color: #f8cf47;
-  padding: 0.5rem 0.4rem; /* Slightly tighter horizontal padding */
+  padding: 0.5rem 0.2rem;
   font-weight: bold;
-  
-  /* 1. Scale down font slightly to fit 1-span columns in Notion */
-  font-size: 1rem; 
-  
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
-  border-left: 4px solid #00d2ff;
-  border-radius: 4px;
-
-  /* 2. Flex centering & Text handling */
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  text-align: center;
-  
-  /* 3. Prevent text overflow */
-  white-space: normal;       /* Allows wrapping if necessary */
-  overflow-wrap: break-word; /* Prevents text breaking out of borders */
-  word-break: break-word;
-  hyphens: auto;             /* Adds soft hyphenation if a word is too wide */
-  box-sizing: border-box;
-}
-
-/* .section-header {
-  background-color: #102737;
-  color: #00d2ff;
-  padding: 0.5rem 0.4rem;
-  font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.8rem; /* Scaled down slightly to ensure fit in 1-column header spans */
   font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
   border-left: 4px solid #00d2ff;
   border-radius: 4px;
   z-index: 1;
-} */
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 
 /* 3. Outer Grid Link Wrapper */
 .grid-card-link {
@@ -104,50 +87,31 @@ body {
 .grid-card {
   width: 100%;
   background-color: transparent;
-  /* border: 1px solid #333333; */
   border-radius: 8px;
   padding: 0.5rem;
   padding-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: border-color 0.3s ease, background-color 0.3s ease; /* transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              box-shadow 0.3s ease,
-              border-color 0.3s ease,
-              background-color 0.3s ease; */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
-
   position: relative;
   overflow: visible !important;
 }
-
-/* .grid-card-link:hover .grid-card { */
-  /* transform: scale(1.1) translateY(-15px); */
-  /* background-color: #1a1a1a; */
-  /* border-color: #00d2ff; */
-  /* box-shadow: 0 10px 20px rgba(0, 210, 255, 0.4); */
-
-  /* z-index: 100;
-  position: relative; */
-/* } */
 
 /* 5. TOP BOX: Media / Image Container */
 .card-media {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  border: 6px solid #ffffff;
-  
-  /* CRITICAL: Clips the image so it doesn't spill outside the circle when enlarged */
+  border: 4px solid #ffffff; /* Reduced from 6px to proportion better with 9 cols */
   overflow: hidden;
-
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   z-index: 2;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-show 0.3s, border-color 0.3s ease;
-  /* padding: 0.25rem; Adjust individual top box spacing here */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .grid-card-link:hover .card-media {
@@ -168,33 +132,27 @@ body {
 
 .grid-card-link:hover .card-media img {
   border-color: #00d2ff;
-}
-
-/* Optional: Extra zoom on hover inside the circle */
-.grid-card-link:hover .card-media img {
-  transform: scale(1.35) !important;   /* Zooms in even further when hovering over the card */
+  transform: scale(1.35) !important;
 }
 
 /* 6. BOTTOM BOX: Text Content Container */
 .card-content {
   width: 100%;
   text-align: center;
-  padding: 0.5rem 0.25rem 0.25rem 0.25rem; /* Adjust individual bottom box spacing here */
+  padding: 0.4rem 0.1rem 0.25rem 0.1rem;
 }
 
 .card-content h3 {
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Adjusted for 9-column width constraints */
   color: #ffffff;
   margin-bottom: 0.2rem;
   transition: color 0.3s ease;
-
-  /* Line Clamping to max 2 lines */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: break-word; /* Prevents long unbroken strings from overflowing */
+  word-break: break-word;
 }
 
 .grid-card-link:hover .card-content h3 {
@@ -202,13 +160,6 @@ body {
 }
 
 .card-content p {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #ffffff;
 }
-
-/* ==========================================
-   TEMPORARY DEBUGGING BORDERS (Delete later)
-   ========================================== */
-/* header, section, main, nav, footer, div {
-  outline: 2px dashed #ff3366 !important;
-} */
