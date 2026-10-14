@@ -10,6 +10,23 @@
 
 <body>
 
+  <!-- BACKGROUND PREFETCH SCRIPT -->
+  <script>
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRnFW041zdJXMRav-fF9iQtmu6Ee6KDKlGfpZPt7YxQD6mWdwimz3jbDsza1wnyLFH2yxbbYeU9Ov5-/pub?gid=0&single=true&output=csv';
+
+    // Prefetch CSV data immediately upon opening the directory if not already cached
+    if (!sessionStorage.getItem('doctorsCSV')) {
+      fetch(SHEET_CSV_URL)
+        .then(response => response.text())
+        .then(csvText => {
+          sessionStorage.setItem('doctorsCSV', csvText);
+        })
+        .catch(error => {
+          console.error("Background prefetch failed:", error);
+        });
+    }
+  </script>
+  
   <!-- MAIN CONTAINER BOX -->
   <section class="content-box">
     <h2>MEET OUR SPECIALISTS</h2>
