@@ -272,7 +272,7 @@ body, html {
 .kudos-scroll-area {
   flex-grow: 1;
   overflow-y: auto;
-  max-height: 130px; /* Limits height so form stays visible */
+  max-height: 260px; /* Limits height so form stays visible */
   margin-bottom: 0.5rem;
   padding-right: 0.3rem;
 }
