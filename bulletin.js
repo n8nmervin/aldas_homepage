@@ -18,15 +18,15 @@ function fetchBulletinData() {
       if (announcementRows.length > 0) {
         // Set title from the first announcement row found
         if (annTitleEl) annTitleEl.textContent = announcementRows[0].title || '📢 ANNOUNCEMENTS';
-        
+
         if (annList) {
           annList.innerHTML = '';
-          
+
           announcementRows.forEach(row => {
             // Check if content_1 has text
             if (row.content_1 && row.content_1.trim() !== '') {
               const li = document.createElement('li');
-              
+
               const textSpan = document.createElement('span');
               textSpan.textContent = row.content_1;
               li.appendChild(textSpan);
@@ -104,7 +104,7 @@ function fetchBulletinData() {
 function renderKudosList() {
   const container = document.getElementById('kudos-container');
   if (!container) return;
-  
+
   container.innerHTML = '';
 
   if (allKudos.length === 0) {
@@ -170,12 +170,24 @@ if (kudosForm) {
       body: JSON.stringify({ message: message, author: author })
     })
       .then(() => {
-        // Optimistically add to local array and re-render instantly
+        // Generate current date & time string (e.g., "Oct 16, 2026, 10:20 AM")
+        const now = new Date();
+        const formattedDate = now.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }) + ', ' + now.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true
+        });
+
+        // Optimistically add to local array with the actual timestamp
         allKudos.push({
           section: 'kudos',
           content_1: message,
           author: author,
-          date: 'Just now'
+          date: formattedDate
         });
         renderKudosList();
 
@@ -189,6 +201,7 @@ if (kudosForm) {
           statusSpan.textContent = 'Live syncs directly to Google Sheet';
         }, 3000);
       })
+      
       .catch(error => {
         console.error('Error posting kudos:', error);
         statusSpan.textContent = 'Failed to post.';
