@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic Bulletin Board</title>
+  <link rel="stylesheet" href="bulletin-style.css">
+</head>
+
+<body>
+
+  <div class="corkboard">
+    <h1 class="board-title">📌 BULLETIN BOARD</h1>
+
+    <!-- ANNOUNCEMENTS NOTE -->
+    <div class="sticky-note yellow">
+      <div class="pin"></div>
+      <h2 id="ann-title">ANNOUNCEMENTS</h2>
+      <ul id="ann-list">
+        <li>Loading announcements...</li>
+      </ul>
+    </div>
+
+    <!-- COLLEAGUE OF THE MONTH / VIDEO REEL NOTE -->
+    <div class="sticky-note polaroid full-media-note">
+      <div class="pin"></div>
+      <div class="polaroid-media-box" id="colleague-media-container">
+        <!-- JavaScript will dynamically insert either an <img> or <video> here -->
+      </div>
+      <!-- Uncomment below if you want captions back later -->
+      <!-- 
+      <div class="polaroid-caption">
+        <h2 id="colleague-title">COLLEAGUE OF THE MONTH</h2>
+        <p><strong id="colleague-name">Loading...</strong></p>
+        <p id="colleague-sub" class="sub-text"></p>
+      </div> 
+      -->
+    </div>
+
+    <!-- KUDOS NOTE -->
+    <div class="sticky-note blue">
+      <div class="pin"></div>
+      <h2 id="kudos-title">💬 TEAM CHAT & KUDOS</h2>
+
+      <!-- Scrollable Feed Container for Multiple Kudos -->
+      <div id="kudos-container" class="kudos-scroll-area">
+        <div class="kudos-item">
+          <p class="kudos-text">Loading kudos feed...</p>
+        </div>
+      </div>
+
+      <!-- Interactive Submission Form -->
+      <form id="kudos-form" class="chat-input-box">
+        <input type="text" id="kudos-input" placeholder="Leave a quick note of appreciation..." required>
+        <input type="text" id="author-input" placeholder="Your name (optional)">
+        <button type="submit" id="kudos-submit-btn">Post Kudos 📌</button>
+        <span id="kudos-status" class="note-tip">Live syncs directly to Google Sheet</span>
+      </form>
+    </div>
+  </div>
+
+  <script src="bulletin.js"></script>
+</body>
+
+</html>
